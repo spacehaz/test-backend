@@ -9,4 +9,4 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use(router)
-app.listen(3000, _ => console.log('server is active at 3000 port'))
+app.listen(3333, _ => console.log('server is active at 3000 port'))
