@@ -1,11 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-router.patch('/:id', function (req, res) {
-  const { subscribe } = req.body
+router.post('/:id', function (req, res) {
   const { id } = req.params
-  console.log({ subscribe, id })
-  res.json({ success: true, subscribe })
+  if (!id) {
+    return res.json({ success: false, error: 'id needed as param' })
+  }
+  res.json({ success: true })
+})
+
+router.delete('/:id', function (req, res) {
+  const { id } = req.params
+  if (!id) {
+    return res.json({ success: false, error: 'id needed as param' })
+  }
+  res.json({ success: true })
 })
 
 module.exports = router
