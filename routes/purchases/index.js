@@ -11,7 +11,7 @@ router.delete('/:id', function (req, res) {
   const { id } = req.params
   const shouldDelete = purchases.find(item => Number(item.id) === Number(id))
   if (!shouldDelete) {
-    return res.status(404).send({ success: false })
+    return res.status(404).send({ success: false, error: 'not found' })
   }
   purchases = purchases.filter(item => Number(item.id) !== Number(id))
   res.json({ purchases, success: true })
