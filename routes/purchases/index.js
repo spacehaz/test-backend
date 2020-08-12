@@ -19,6 +19,9 @@ router.delete('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
   const { id } = req.body
+  if (!id) {
+    return res.json({ error: 'id needed', success: false })
+  }
   const shouldAdd = purchases.find(item => Number(item.id) === Number(id))
   if (shouldAdd) {
     return res.json({ purchases, success: true })
