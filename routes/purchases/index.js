@@ -24,7 +24,7 @@ router.post('/', function (req, res) {
   }
   const shouldAdd = purchases.find(item => Number(item.id) === Number(id))
   if (shouldAdd) {
-    return res.json({ purchases, success: true })
+    return res.json({ message: 'already added', purchases, success: true })
   }
   purchases = purchases.concat({ id: Number(id) })
   res.json({ success: true, purchases })
