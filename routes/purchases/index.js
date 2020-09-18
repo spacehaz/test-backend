@@ -4,14 +4,37 @@ let purchases = []
 
 
 router.get('/', function (req, res) {
-  res.json(purchases)
+  res.json([
+    {
+      title: 'Французские булочки',
+      id: 1
+    }, {
+      title: 'Пончики',
+      id: 2
+    }, {
+      title: 'Тирамису',
+      id: 3
+    }, {
+      title: 'Вок',
+      id: 4
+    }, {
+      title: 'Крендельки',
+      id: 5
+    }, {
+      title: 'Начос',
+      id: 6
+    }, {
+      title: 'Оливье',
+      id: 7
+    }
+  ])
 })
 
 router.delete('/:id', function (req, res) {
   const { id } = req.params
   const shouldDelete = purchases.find(item => Number(item.id) === Number(id))
   if (!shouldDelete) {
-    return res.status(404).send({ success: false, error: 'not found' })
+    return res.status(404).send({ success: false, error: 'not found', purchases })
   }
   purchases = purchases.filter(item => Number(item.id) !== Number(id))
   res.json({ purchases, success: true })
