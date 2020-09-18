@@ -1,33 +1,33 @@
 var express = require('express')
 var router = express.Router()
-let purchases = []
+let purchases = [
+  {
+    title: 'Французские булочки',
+    id: 1
+  }, {
+    title: 'Пончики',
+    id: 2
+  }, {
+    title: 'Тирамису',
+    id: 3
+  }, {
+    title: 'Вок',
+    id: 4
+  }, {
+    title: 'Крендельки',
+    id: 5
+  }, {
+    title: 'Начос',
+    id: 6
+  }, {
+    title: 'Оливье',
+    id: 7
+  }
+]
 
 
 router.get('/', function (req, res) {
-  res.json([
-    {
-      title: 'Французские булочки',
-      id: 1
-    }, {
-      title: 'Пончики',
-      id: 2
-    }, {
-      title: 'Тирамису',
-      id: 3
-    }, {
-      title: 'Вок',
-      id: 4
-    }, {
-      title: 'Крендельки',
-      id: 5
-    }, {
-      title: 'Начос',
-      id: 6
-    }, {
-      title: 'Оливье',
-      id: 7
-    }
-  ])
+  res.json(purchases)
 })
 
 router.delete('/:id', function (req, res) {
@@ -53,7 +53,7 @@ router.post('/', function (req, res) {
   res.json({ success: true, purchases })
 })
 
-router.get(`/${id}`, function (req, res) {
+router.get(`/:id`, function (req, res) {
   const { id } = req.params
   if (!id) {
     return res.json({ error: 'id needed', success: false })
