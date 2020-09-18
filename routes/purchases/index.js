@@ -53,4 +53,16 @@ router.post('/', function (req, res) {
   res.json({ success: true, purchases })
 })
 
+router.get(`/${id}`, function (req, res) {
+  const { id } = req.params
+  if (!id) {
+    return res.json({ error: 'id needed', success: false })
+  }
+  const purchase = purchases.find(item => Number(item.id) === Number(id))
+  if (!purchase) {
+    return res.status(404).json({ message: 'not found', success: false })
+  }
+  res.json({ success: true, purchase })
+})
+
 module.exports = router
